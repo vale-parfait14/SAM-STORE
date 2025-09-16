@@ -2,117 +2,404 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>SamDigitale - Télécharger l’application Android</title>
+  <title>SamDigitale - Télécharger l'application Android</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-light: #6366f1;
-      --bg: #f8fafc;
-      --card-bg: #fff;
-      --radius: 20px;
-      --shadow: 0 6px 32px rgba(79,70,229,0.08);
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --accent: #06b6d4;
+      --bg-primary: #fefefe;
+      --bg-secondary: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.15);
+      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-soft: 0 4px 20px rgba(99, 102, 241, 0.08);
+      --shadow-medium: 0 8px 32px rgba(99, 102, 241, 0.12);
+      --shadow-strong: 0 16px 48px rgba(99, 102, 241, 0.16);
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       min-height: 100vh;
-      margin: 0;
-      font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
-      background: linear-gradient(120deg, var(--bg) 0%, #e0e7ff 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #e0e7ff 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s;
+      padding: 1rem;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Éléments décoratifs de fond inspirés du design minimaliste moderne */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 60%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -20%;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.02) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(1deg); }
+      66% { transform: translateY(10px) rotate(-1deg); }
+    }
+
     .container {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 2.5rem 2rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-medium);
+      padding: 3rem 2.5rem;
       text-align: center;
-      max-width: 370px;
+      max-width: 420px;
       width: 100%;
-      animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      z-index: 10;
+      animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(40px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
     }
+
+    /* Logo avec design moderne épuré */
+    .logo-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .logo-container::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      border-radius: var(--radius-lg);
+      opacity: 0.1;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.1; }
+      50% { transform: scale(1.05); opacity: 0.15; }
+    }
+
     .logo {
-      width: 72px;
-      height: 72px;
+      width: 80px;
+      height: 80px;
       object-fit: contain;
-      margin-bottom: 16px;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(79,70,229,0.07);
-      background: #f3f4f6;
-      padding: 8px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      background: linear-gradient(135deg, #f8fafc, #ffffff);
+      padding: 12px;
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
     }
-    h1 {
-      font-size: 2rem;
+
+    .logo:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Typographie épurée moderne */
+    .title {
+      font-size: 2.2rem;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: #222;
-      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
+
     .app-name {
-      font-size: 1.15rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 500;
       color: var(--primary);
-      margin-bottom: 24px;
-      letter-spacing: 0.5px;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+      position: relative;
     }
+
+    .app-name::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 1px;
+    }
+
+    /* Bouton de téléchargement ultra-moderne */
+    .download-section {
+      margin-bottom: 2rem;
+    }
+
     .download-btn {
-      background: linear-gradient(90deg, var(--primary-light) 0%, var(--primary) 100%);
-      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
       border: none;
-      border-radius: 10px;
-      padding: 15px 0;
-      font-size: 1.08rem;
+      border-radius: var(--radius-md);
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(79,70,229,0.09);
       width: 100%;
-      transition: background 0.2s, box-shadow 0.2s;
-      outline: none;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-soft);
+      letter-spacing: 0.01em;
     }
-    .download-btn:hover, .download-btn:focus {
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
-      box-shadow: 0 4px 18px rgba(79,70,229,0.13);
+
+    .download-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s;
     }
-    @media (max-width: 600px) {
+
+    .download-btn:hover::before {
+      left: 100%;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-strong);
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    }
+
+    .download-btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-icon {
+      display: inline-block;
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-3px); }
+      60% { transform: translateY(-2px); }
+    }
+
+    /* Section d'informations épurée */
+    .info-section {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(99, 102, 241, 0.02);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(99, 102, 241, 0.08);
+      transition: var(--transition);
+    }
+
+    .info-item:hover {
+      background: rgba(99, 102, 241, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .info-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .compatibility-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* Responsive design optimisé */
+    @media (max-width: 480px) {
       .container {
-        padding: 1.5rem 0.7rem;
-        max-width: 98vw;
+        padding: 2rem 1.5rem;
+        max-width: 95vw;
+        border-radius: var(--radius-lg);
       }
-      h1 {
-        font-size: 1.3rem;
+      
+      .title {
+        font-size: 1.8rem;
       }
+      
       .logo {
-        width: 56px;
-        height: 56px;
+        width: 70px;
+        height: 70px;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .download-btn {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
       }
     }
-    @media (max-width: 400px) {
+
+    @media (max-width: 360px) {
       .container {
-        padding: 1rem 0.2rem;
+        padding: 1.5rem 1rem;
       }
-      h1 {
-        font-size: 1.1rem;
+      
+      .title {
+        font-size: 1.6rem;
+      }
+      
+      .logo {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    /* Animation d'entrée séquentielle */
+    .container > * {
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .logo-container { animation-delay: 0.1s; }
+    .title { animation-delay: 0.2s; }
+    .app-name { animation-delay: 0.3s; }
+    .download-section { animation-delay: 0.4s; }
+    .info-section { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* États de focus pour l'accessibilité */
+    .download-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Mode sombre (optionnel) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: rgba(30, 41, 59, 0.95);
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border: rgba(148, 163, 184, 0.2);
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="Adobe Express - file (3).png" alt="Logo SamDigitale" class="logo">
-    <h1>Téléchargez l’application Android</h1>
+    <div class="logo-container">
+      <img src="Adobe Express - file (3).png" alt="Logo SamDigitale" class="logo">
+    </div>
+    
+    <h1 class="title">Téléchargez l'app</h1>
     <div class="app-name">SamDigitale</div>
-    <a href="app-release.apk" download style="text-decoration:none;width:100%;display:inline-block;">
-      <button class="download-btn">📥 Télécharger l’APK</button>
-    </a>
-    <div style="margin-top:28px;font-size:0.98rem;color:#6b7280;line-height:1.5;">
-      <span style="display:inline-block;margin-bottom:6px;">Simple, rapide et sécurisé.</span><br>
-      <span style="font-size:0.93rem;">Compatible tous appareils Android.</span>
+    
+    <div class="download-section">
+      <a href="app-release.apk" download style="text-decoration:none;width:100%;display:inline-block;">
+        <button class="download-btn">
+          <span class="btn-icon">📱</span>
+          Télécharger l'APK
+        </button>
+      </a>
+    </div>
+    
+    <div class="info-section">
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-icon">⚡</span>
+          <div class="info-text">Installation rapide</div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🔒</span>
+          <div class="info-text">100% sécurisé</div>
+        </div>
+      </div>
+      <div class="compatibility-note">
+        Compatible avec tous les appareils Android 6.0+
+      </div>
     </div>
   </div>
 </body>
